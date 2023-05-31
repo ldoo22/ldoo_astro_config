@@ -34,3 +34,6 @@ git clone https://github.com/ldoo22/ldoo_astro_config ~/.config/astronvim/lua/us
 ```shell
 nvim
 ```
+
+#### Other stuff
+astronvim background color: #1E222A
