@@ -37,7 +37,7 @@ nvim
 
 #### Other stuff
 astronvim background color: #1E222A
-##### Possible .tmux.config
+##### Possible .tmux.conf
 ```
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -g default-terminal "tmux-256color"
