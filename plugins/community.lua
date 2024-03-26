@@ -17,11 +17,11 @@ return {
           dismiss = "<C/>",
         },
       },
+      filetypes = {
+        yaml = true,
+        markdown = true,
+      }
     },
   },
-  -- { import = "astrocommunity.git.neogit" },
-  -- {
-  --   "neogit",
-  -- }
 }
 

@@ -4,19 +4,32 @@ return {
     lazy = false,
     branch = "canary",
     dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+      { "zbirenbaum/copilot.lua" },
+      { "nvim-lua/plenary.nvim" },
     },
     opts = {
-      -- debug = true, -- Enable debugging
-      -- See Configuration section for rest
       window = {
         layout = "float",
         height = 0.9,
         width = 0.9,
         border = 'rounded',
+      },
+      show_help = false,
+      auto_insert_mode = true,
+      mappings = {
+        close = {
+          normal = '<M-n>',
+          insert = '<M-n>'
+        },
+        reset = {
+          normal ='<M-r>',
+          insert = '<M-r>'
+        },
+        submit_prompt = {
+          normal = '<M-m>',
+          insert = '<M-m>'
+        },
       }
     },
-    -- See Commands section for default commands if you want to lazy load on them
   },
 }
