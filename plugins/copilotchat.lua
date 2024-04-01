@@ -8,6 +8,9 @@ return {
       { "nvim-lua/plenary.nvim" },
     },
     opts = {
+      question_header = '###################################   **You**   ###################################',
+      answer_header =   '################################### **Copilot** ###################################',
+      separator = ' ',
       window = {
         layout = "float",
         height = 0.9,
