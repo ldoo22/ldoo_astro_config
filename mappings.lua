@@ -64,6 +64,12 @@ return {
         toggleterm.toggle()
       end
     },
+
+    ['<M-S-t>'] = {
+      function()
+        toggleterm.exec('!!')
+      end
+    },
   },
 
   v = {
