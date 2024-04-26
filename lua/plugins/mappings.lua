@@ -1,3 +1,4 @@
+local gitsigns = require("gitsigns")
 local mark = require('harpoon.mark')
 local ui = require('harpoon.ui')
 local chat = require('CopilotChat')
@@ -11,9 +12,29 @@ return {
     opts = {
       mappings = {
         n = {
+          --gitsigns
+          ['<Space>gm'] = {
+            gitsigns.prev_hunk,
+            desc = "Previous hunk"
+          },
+          ['<Space>gn'] = {
+            gitsigns.next_hunk,
+            desc = "Next hunk"
+          },
 
-          ['<Space>gn'] = { '<cmd>lua require("gitsigns").next_hunk()<CR>', noremap = true, silent = true },
-          ['<Space>gp'] = { '<cmd>lua require("gitsigns").prev_hunk()<CR>', noremap = true, silent = true },
+          --copy lsp error to clipboard
+          ['<Space>le'] = {
+            function()
+              vim.diagnostic.open_float()
+              vim.diagnostic.open_float()
+              local win_id = vim.fn.win_getid()
+              vim.cmd("normal! j")
+              vim.cmd("normal! VG")
+              vim.cmd("normal! \"*y")
+              vim.api.nvim_win_close(win_id, true)
+            end,
+            desc = "Copy LSP errors to loclist"
+          },
 
           -- zenmode
           ['<leader>zz'] = {
@@ -129,9 +150,9 @@ return {
 
         i = {
           -- copilot
-          ['<M-m>'] = { vim.api.nvim_set_keymap('n', '<M-m>', '<cmd>lua require("CopilotChat").accept_diff()<CR>', {noremap = true, silent = true}) },
-          ['<M-,>'] = { vim.api.nvim_set_keymap('n', '<M-,>', '<cmd>lua require("CopilotChat").next()<CR>', {noremap = true, silent = true}) },
-          ['<M-.>'] = { vim.api.nvim_set_keymap('n', '<M-.>', '<cmd>lua require("CopilotChat").prev()<CR>', {noremap = true, silent = true}) },
+          ['<M-m>'] = { vim.api.nvim_set_keymap('n', '<M-m>', '<cmd>lua require("CopilotChat").accept_diff()<CR>', { noremap = true, silent = true }) },
+          ['<M-,>'] = { vim.api.nvim_set_keymap('n', '<M-,>', '<cmd>lua require("CopilotChat").next()<CR>', { noremap = true, silent = true }) },
+          ['<M-.>'] = { vim.api.nvim_set_keymap('n', '<M-.>', '<cmd>lua require("CopilotChat").prev()<CR>', { noremap = true, silent = true }) },
 
           -- CopilotChat
           ['<M-n>'] = {
