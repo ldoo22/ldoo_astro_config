@@ -176,6 +176,12 @@ return {
               chat.toggle()
             end
           },
+
+          ['<M-Esc>'] = {
+            function()
+              vim.cmd('stopinsert')
+            end
+          },
         }
 
       },
