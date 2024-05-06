@@ -9,11 +9,11 @@ return {
     opts = {
       suggestion = {
         keymap = {
-          accept = "<M-m>",
+          accept = _G.alt_shortkeys['copilot_accept'],
           accept_word = false,
           accept_line = false,
-          next = "<M-,>",
-          prev = "<M-.>",
+          next = _G.alt_shortkeys['copilot_next'],
+          prev = _G.alt_shortkeys['copilot_prev'],
           dismiss = "<C/>",
         },
       },

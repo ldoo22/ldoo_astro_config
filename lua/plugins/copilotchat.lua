@@ -21,16 +21,16 @@ return {
       auto_insert_mode = true,
       mappings = {
         close = {
-          normal = '<M-n>',
-          insert = '<M-n>'
+          normal = _G.alt_shortkeys['copilotchat_toggle'],
+          insert = _G.alt_shortkeys['copilotchat_toggle']
         },
         reset = {
-          normal ='<M-r>',
-          insert = '<M-r>'
+          normal = _G.alt_shortkeys['copilotchat_reset'],
+          insert = _G.alt_shortkeys['copilotchat_reset']
         },
         submit_prompt = {
-          normal = '<M-m>',
-          insert = '<M-m>'
+          normal = _G.alt_shortkeys['copilotchat_send'],
+          insert = _G.alt_shortkeys['copilotchat_send']
         },
       }
     },

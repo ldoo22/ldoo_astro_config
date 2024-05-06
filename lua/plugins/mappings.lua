@@ -45,12 +45,12 @@ return {
           },
 
           -- harpoon
-          ['<M-h>'] = {
+          [_G.alt_shortkeys['harpoon_add']] = {
             function()
               mark.add_file()
             end
           },
-          ['<M-l>'] = {
+          [_G.alt_shortkeys['harpoon_toggle']] = {
             function()
               ui.toggle_quick_menu()
             end
@@ -77,25 +77,25 @@ return {
           },
 
           -- CopilotChat
-          ['<M-n>'] = {
+          [_G.alt_shortkeys['copilotchat_toggle']] = {
             function()
               chat.toggle()
             end
           },
-          ['<M-o>'] = {
+          [_G.alt_shortkeys['copilotchat_reset']] = {
             function()
               vim.cmd('CopilotChatReset')
             end
           },
 
           -- toggleterm
-          ['<M-t>'] = {
+          [_G.alt_shortkeys['term_toggle']] = {
             function()
               toggleterm.toggle()
             end
           },
 
-          ['<M-S-t>'] = {
+          [_G.alt_shortkeys['term_exec_last']] = {
             function()
               toggleterm.exec('!!')
             end
@@ -107,32 +107,32 @@ return {
           ['K'] = { ":m '<-2<CR>gv=gv" },
 
           -- CopilotChat
-          ['<M-n>'] = {
+          [_G.alt_shortkeys['copilotchat_toggle']] = {
             function()
               chat.toggle()
             end
           },
-          ['<M-r>'] = {
+          [_G.alt_shortkeys['copilotchat_reset']] = {
             function()
               vim.cmd('CopilotChatReset')
             end
           },
-          ['<M-f>'] = {
+          [_G.alt_shortkeys['copilotchat_fix']] = {
             function()
               vim.cmd('CopilotChatFix')
             end
           },
-          ['<M-e>'] = {
+          [_G.alt_shortkeys['copilotchat_explain']] = {
             function()
               vim.cmd('CopilotChatExplain')
             end
           },
-          ['<M-o>'] = {
+          [_G.alt_shortkeys['copilotchat_optimize']] = {
             function()
               vim.cmd('CopilotChatOptimize')
             end
           },
-          ['<M-c>'] = {
+          [_G.alt_shortkeys['copilotchat_clean']] = {
             function()
               chat.ask('Clean up this code', {
                 selection = require('CopilotChat.select').visual
@@ -141,7 +141,7 @@ return {
           },
 
           -- toggleterm
-          ['<M-t>'] = {
+          [_G.alt_shortkeys['term_toggle']] = {
             function()
               toggleterm.toggle()
             end
@@ -149,18 +149,19 @@ return {
         },
 
         i = {
-          -- copilot
-          ['<M-m>'] = { vim.api.nvim_set_keymap('n', '<M-m>', '<cmd>lua require("CopilotChat").accept_diff()<CR>', { noremap = true, silent = true }) },
-          ['<M-,>'] = { vim.api.nvim_set_keymap('n', '<M-,>', '<cmd>lua require("CopilotChat").next()<CR>', { noremap = true, silent = true }) },
-          ['<M-.>'] = { vim.api.nvim_set_keymap('n', '<M-.>', '<cmd>lua require("CopilotChat").prev()<CR>', { noremap = true, silent = true }) },
 
-          -- CopilotChat
-          ['<M-n>'] = {
+          [_G.alt_shortkeys['copilotchat_send']] = {
+            function()
+              chat.accept_diff()
+            end
+          },
+
+          [_G.alt_shortkeys['copilotchat_toggle']] = {
             function()
               chat.toggle()
             end
           },
-          ['<M-r>'] = {
+          [_G.alt_shortkeys['copilotchat_reset']] = {
             function()
               vim.cmd('CopilotChatReset')
             end
@@ -168,10 +169,16 @@ return {
         },
 
         t = {
-          ['<M-t>'] = { "<Cmd>ToggleTerm<CR>", desc = "Toggle terminal" },
+          [_G.alt_shortkeys['term_toggle']] = { "<Cmd>ToggleTerm<CR>", desc = "Toggle terminal" },
+          [_G.alt_shortkeys['term_exec_last']] = { "<Cmd>ToggleTermExecLast<CR>", desc = "Execute last command in terminal" },
+          ['<M-Esc>'] = {
+            function()
+              vim.cmd('stopinsert')
+            end
+          },
 
           -- CopilotChat
-          ['<M-n>'] = {
+          [_G.alt_shortkeys['copilotchat_toggle']] = {
             function()
               chat.toggle()
             end
@@ -182,8 +189,7 @@ return {
               vim.cmd('stopinsert')
             end
           },
-        }
-
+        },
       },
     },
   },
