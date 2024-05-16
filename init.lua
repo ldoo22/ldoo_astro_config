@@ -1,6 +1,26 @@
-vim.fn.has('macunix')
 _G.alt_shortkeys = {}
-if vim.fn.has('macunix') then
+local uname = vim.trim(string.lower(vim.fn.system('uname')))
+if uname == 'linux' then
+  _G.alt_shortkeys['harpoon_add'] = '<M-h>'
+  _G.alt_shortkeys['harpoon_toggle'] = '<M-l>'
+
+  _G.alt_shortkeys['copilotchat_toggle'] = '<M-n>'
+  _G.alt_shortkeys['copilotchat_reset'] = '<M-o>'
+  _G.alt_shortkeys['copilotchat_fix'] = '<M-f>'
+  _G.alt_shortkeys['copilotchat_explain'] = '<M-e>'
+  _G.alt_shortkeys['copilotchat_optimize'] = '<M-o>'
+  _G.alt_shortkeys['copilotchat_clean'] = '<M-c>'
+  _G.alt_shortkeys['copilotchat_send'] = '<M-m>'
+
+  _G.alt_shortkeys['term_toggle'] = '<M-t>'
+  _G.alt_shortkeys['term_exec_last'] = '<M-S-t>'
+
+  _G.alt_shortkeys['copilot_accept'] = '<M-m>'
+  _G.alt_shortkeys['copilot_next'] = '<M-,>'
+  _G.alt_shortkeys['copilot_prev'] = '<M-.>'
+
+  _G.alt_shortkeys['insert_breakpoint'] = '<M-S-d>'
+else
   _G.alt_shortkeys['harpoon_add'] = 'ˇ'
   _G.alt_shortkeys['harpoon_toggle'] = '‘'
 
@@ -19,25 +39,6 @@ if vim.fn.has('macunix') then
   _G.alt_shortkeys['copilot_accept'] = 'µ'
   _G.alt_shortkeys['copilot_next'] = '“'
   _G.alt_shortkeys['copilot_prev'] = '…'
-
-else
-  _G.alt_shortkeys['harpoon_add'] = '<M-h>'
-  _G.alt_shortkeys['harpoon_toggle'] = '<M-l>'
-
-  _G.alt_shortkeys['copilotchat_toggle'] = '<M-n>'
-  _G.alt_shortkeys['copilotchat_reset'] = '<M-o>'
-  _G.alt_shortkeys['copilotchat_fix'] = '<M-f>'
-  _G.alt_shortkeys['copilotchat_explain'] = '<M-e>'
-  _G.alt_shortkeys['copilotchat_optimize'] = '<M-o>'
-  _G.alt_shortkeys['copilotchat_clean'] = '<M-c>'
-  _G.alt_shortkeys['copilotchat_send'] = '<M-m>'
-
-  _G.alt_shortkeys['term_toggle'] = '<M-t>'
-  _G.alt_shortkeys['term_exec_last'] = '<M-S-t>'
-
-  _G.alt_shortkeys['copilot_accept'] = '<M-m>'
-  _G.alt_shortkeys['copilot_next'] = '<M-,>'
-  _G.alt_shortkeys['copilot_prev'] = '<M-.>'
 end
 -- This file simply bootstraps the installation of Lazy.nvim and then calls other files for execution
 -- This file doesn't necessarily need to be touched, BE CAUTIOUS editing this file and proceed at your own risk.
