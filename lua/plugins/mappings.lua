@@ -5,6 +5,15 @@ local chat = require('CopilotChat')
 
 local toggleterm = require('toggleterm')
 
+
+local function insert_breakpoint(breakpoint)
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1]
+  local new_line = line:sub(1, col) .. breakpoint .. line:sub(col + 1)
+  vim.api.nvim_buf_set_lines(0, row - 1, row, false, { new_line })
+end
+
+
 return {
   {
     "AstroNvim/astrocore",
@@ -169,13 +178,11 @@ return {
 
           [_G.alt_shortkeys['insert_breakpoint']] = {
             function()
-              print('inserting breakpoint')
               local ft = vim.api.nvim_buf_get_option(0, 'filetype')
               if ft == 'python' then
-                local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-                vim.api.nvim_buf_set_lines(0, row - 1, row, false,
-                  { vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1]:sub(1, col) ..
-                  "__import__('ipdb').set_trace()" .. vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1]:sub(col + 1) })
+                insert_breakpoint("__import__('ipdb').set_trace()")
+              elseif ft == 'ruby' then
+                insert_breakpoint("require 'byebug'; byebug")
               end
             end
           }
@@ -184,11 +191,6 @@ return {
         t = {
           [_G.alt_shortkeys['term_toggle']] = { "<Cmd>ToggleTerm<CR>", desc = "Toggle terminal" },
           [_G.alt_shortkeys['term_exec_last']] = { "<Cmd>ToggleTermExecLast<CR>", desc = "Execute last command in terminal" },
-          ['<M-Esc>'] = {
-            function()
-              vim.cmd('stopinsert')
-            end
-          },
 
           -- CopilotChat
           [_G.alt_shortkeys['copilotchat_toggle']] = {
