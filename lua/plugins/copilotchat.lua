@@ -9,13 +9,14 @@ return {
     },
     opts = {
       question_header = '###################################   **You**   ###################################',
-      answer_header =   '################################### **Copilot** ###################################',
+      answer_header = '################################### **Copilot** ###################################',
       separator = ' ',
       window = {
         layout = "float",
         height = 0.9,
         width = 0.9,
         border = 'rounded',
+        zindex = 100,
       },
       show_help = false,
       auto_insert_mode = true,
@@ -32,7 +33,7 @@ return {
           normal = _G.alt_shortkeys['copilotchat_send'],
           insert = _G.alt_shortkeys['copilotchat_send']
         },
-      }
+      },
     },
   },
 }
