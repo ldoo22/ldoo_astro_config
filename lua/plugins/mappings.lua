@@ -1,6 +1,4 @@
 local gitsigns = require("gitsigns")
-local mark = require('harpoon.mark')
-local ui = require('harpoon.ui')
 local chat = require('CopilotChat')
 
 local toggleterm = require('toggleterm')
@@ -53,38 +51,6 @@ return {
             end
           },
 
-          -- harpoon
-          [_G.alt_shortkeys['harpoon_add']] = {
-            function()
-              mark.add_file()
-            end
-          },
-          [_G.alt_shortkeys['harpoon_toggle']] = {
-            function()
-              ui.toggle_quick_menu()
-            end
-          },
-          ['<C-h>'] = {
-            function()
-              ui.nav_file(1)
-            end
-          },
-          ['<C-j>'] = {
-            function()
-              ui.nav_file(2)
-            end
-          },
-          ['<C-k>'] = {
-            function()
-              ui.nav_file(3)
-            end
-          },
-          ['<C-l>'] = {
-            function()
-              ui.nav_file(4)
-            end
-          },
-
           -- CopilotChat
           [_G.alt_shortkeys['copilotchat_toggle']] = {
             function()
@@ -107,6 +73,32 @@ return {
           [_G.alt_shortkeys['term_exec_last']] = {
             function()
               toggleterm.exec('!!')
+            end
+          },
+
+          -- harpoon
+          ['<C-h>'] = {
+            function()
+              print('harpoon 1')
+              require("harpoon"):list():select(1)
+            end
+          },
+          ['<C-j>'] = {
+            function()
+              print('harpoon 2')
+              require("harpoon"):list():select(2)
+            end
+          },
+          ['<C-k>'] = {
+            function()
+              print('harpoon 3')
+              require("harpoon"):list():select(3)
+            end
+          },
+          ['<C-l>'] = {
+            function()
+              print('harpoon 4')
+              require("harpoon"):list():select(4)
             end
           },
         },
@@ -180,7 +172,7 @@ return {
             function()
               local ft = vim.api.nvim_buf_get_option(0, 'filetype')
               if ft == 'python' then
-                insert_breakpoint("__import__('ipdb').set_trace()")
+                insert_breakpoint("__import__('ipdb').set_trace(context=10)")
               elseif ft == 'ruby' then
                 insert_breakpoint("require 'byebug'; byebug")
               end
