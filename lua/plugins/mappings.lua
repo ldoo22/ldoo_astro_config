@@ -77,27 +77,33 @@ return {
           },
 
           -- harpoon
-          ['<C-h>'] = {
+          [_G.alt_shortkeys['harpoon_add']] = {
             function()
-              print('harpoon 1')
+              require("harpoon"):list():add()
+            end
+          },
+          [_G.alt_shortkeys['harpoon_toggle']] = {
+            function()
+              require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+            end
+          },
+          [_G.alt_shortkeys['harpoon_open_1']] = {
+            function()
               require("harpoon"):list():select(1)
             end
           },
-          ['<C-j>'] = {
+          [_G.alt_shortkeys['harpoon_open_2']] = {
             function()
-              print('harpoon 2')
               require("harpoon"):list():select(2)
             end
           },
-          ['<C-k>'] = {
+          [_G.alt_shortkeys['harpoon_open_3']] = {
             function()
-              print('harpoon 3')
               require("harpoon"):list():select(3)
             end
           },
-          ['<C-l>'] = {
+          [_G.alt_shortkeys['harpoon_open_4']] = {
             function()
-              print('harpoon 4')
               require("harpoon"):list():select(4)
             end
           },
