@@ -113,6 +113,17 @@ return {
           ['J'] = { ":m '>+1<CR>gv=gv" },
           ['K'] = { ":m '<-2<CR>gv=gv" },
 
+          ['<leader>ff'] = {
+            function()
+              vim.api.nvim_command('normal! "zy')
+              local selection = vim.fn.getreg('z')
+              selection = selection:gsub('\n', '')
+              selection = selection:gsub(' ', '\\ ')
+              local command = 'Telescope live_grep default_text=' .. selection
+              vim.api.nvim_command(command)
+            end
+          },
+
           -- CopilotChat
           [_G.alt_shortkeys['copilotchat_toggle']] = {
             function()
