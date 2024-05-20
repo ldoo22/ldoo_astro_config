@@ -117,6 +117,11 @@ return {
             function()
               vim.api.nvim_command('normal! "zy')
               local selection = vim.fn.getreg('z')
+              local special_chars = { '\\', '.', '*', '+', '-', '?', '|', '(', ')', '[', ']', '{', '}', '^', '$' }
+              for _, char in ipairs(special_chars) do
+                selection = selection:gsub('%' .. char, '\\' .. char)
+              end
+
               selection = selection:gsub('\n', '')
               selection = selection:gsub(' ', '\\ ')
               local command = 'Telescope live_grep default_text=' .. selection
