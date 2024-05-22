@@ -1,6 +1,6 @@
 local alt_map = {
   copilotchat_toggle = { '<M-n>', '¬' },
-  copilotchat_reset = { '<M-o>', '®' },
+  copilotchat_reset = { '<M-r>', '®' },
   copilotchat_fix = { '<M-f>', 'ƒ' },
   copilotchat_explain = { '<M-e>', 'æ' },
   copilotchat_optimize = { '<M-o>', 'ø' },
