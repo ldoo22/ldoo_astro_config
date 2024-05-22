@@ -107,6 +107,12 @@ return {
               require("harpoon"):list():select(4)
             end
           },
+
+          ['<leader>fg'] = {
+            function()
+              require('telescope').extensions.live_grep_args.live_grep_args()
+            end
+          }
         },
 
         v = {
