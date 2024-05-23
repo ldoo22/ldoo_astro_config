@@ -24,13 +24,6 @@ return {
     },
   },
   {
-    import = "astrocommunity.motion.harpoon",
-    settings = {
-      save_on_toggle = true,
-      save_on_close = true,
-    }
-  },
-  {
     import = "astrocommunity.utility.telescope-live-grep-args-nvim",
   }
 }
