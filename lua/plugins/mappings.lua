@@ -11,6 +11,7 @@ local function insert_breakpoint(breakpoint)
   vim.api.nvim_buf_set_lines(0, row - 1, row, false, { new_line })
 end
 
+local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
 
 return {
   {
@@ -110,7 +111,7 @@ return {
 
           ['<leader>fg'] = {
             function()
-              require('telescope').extensions.live_grep_args.live_grep_args()
+              live_grep_args_shortcuts.grep_word_under_cursor({ postfix = '' })
             end
           }
         },
@@ -119,19 +120,9 @@ return {
           ['J'] = { ":m '>+1<CR>gv=gv" },
           ['K'] = { ":m '<-2<CR>gv=gv" },
 
-          ['<leader>ff'] = {
+          ['<leader>fg'] = {
             function()
-              vim.api.nvim_command('normal! "zy')
-              local selection = vim.fn.getreg('z')
-              local special_chars = { '\\', '.', '*', '+', '-', '?', '|', '(', ')', '[', ']', '{', '}', '^', '$' }
-              for _, char in ipairs(special_chars) do
-                selection = selection:gsub('%' .. char, '\\' .. char)
-              end
-
-              selection = selection:gsub('\n', '')
-              selection = selection:gsub(' ', '\\ ')
-              local command = 'Telescope live_grep default_text=' .. selection
-              vim.api.nvim_command(command)
+              live_grep_args_shortcuts.grep_visual_selection({ postfix = '' })
             end
           },
 
