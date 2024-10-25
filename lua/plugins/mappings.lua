@@ -20,6 +20,19 @@ return {
     opts = {
       mappings = {
         n = {
+          ['<Leader>fg'] = {
+            function()
+              live_grep_args_shortcuts.grep_word_under_cursor({ postfix = '' })
+            end,
+            desc = "Live grep word under cursor"
+          },
+          ['<Leader>fw'] = {
+            function()
+              live_grep_args.live_grep_args()
+            end,
+            desc = "Live grep with args"
+          },
+
           --gitsigns
           ['<Space>gm'] = {
             gitsigns.prev_hunk,
@@ -45,7 +58,7 @@ return {
           },
 
           -- zenmode
-          ['<leader>zz'] = {
+          ['<Leader>zz'] = {
             function()
               require("zen-mode").toggle()
               vim.wo.wrap = false
@@ -109,18 +122,13 @@ return {
             end
           },
 
-          ['<leader>fg'] = {
-            function()
-              live_grep_args_shortcuts.grep_word_under_cursor({ postfix = '' })
-            end
-          }
         },
 
         v = {
           ['J'] = { ":m '>+1<CR>gv=gv" },
           ['K'] = { ":m '<-2<CR>gv=gv" },
 
-          ['<leader>fg'] = {
+          ['<Leader>fg'] = {
             function()
               live_grep_args_shortcuts.grep_visual_selection({ postfix = '' })
             end
@@ -169,7 +177,6 @@ return {
         },
 
         i = {
-
           [_G.alt_shortkeys['copilotchat_send']] = {
             function()
               chat.accept_diff()
@@ -181,6 +188,7 @@ return {
               chat.toggle()
             end
           },
+
           [_G.alt_shortkeys['copilotchat_reset']] = {
             function()
               vim.cmd('CopilotChatReset')
