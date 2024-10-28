@@ -1,8 +1,8 @@
 local gitsigns = require("gitsigns")
 local chat = require('CopilotChat')
-
 local toggleterm = require('toggleterm')
-
+local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
+local live_grep_args = require("telescope").extensions.live_grep_args
 
 local function insert_breakpoint(breakpoint)
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
