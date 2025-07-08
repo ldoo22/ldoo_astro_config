@@ -1,5 +1,5 @@
 local gitsigns = require("gitsigns")
-local chat = require('CopilotChat')
+-- local chat = require('CopilotChat')
 local toggleterm = require('toggleterm')
 local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
 local live_grep_args = require("telescope").extensions.live_grep_args
@@ -10,8 +10,6 @@ local function insert_breakpoint(breakpoint)
   local new_line = line:sub(1, col) .. breakpoint .. line:sub(col + 1)
   vim.api.nvim_buf_set_lines(0, row - 1, row, false, { new_line })
 end
-
-local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
 
 return {
   {
@@ -66,16 +64,16 @@ return {
           },
 
           -- CopilotChat
-          [_G.alt_shortkeys['copilotchat_toggle']] = {
-            function()
-              chat.toggle()
-            end
-          },
-          [_G.alt_shortkeys['copilotchat_reset']] = {
-            function()
-              vim.cmd('CopilotChatReset')
-            end
-          },
+          -- [_G.alt_shortkeys['copilotchat_toggle']] = {
+          --   function()
+          --     chat.toggle()
+          --   end
+          -- },
+          -- [_G.alt_shortkeys['copilotchat_reset']] = {
+          --   function()
+          --     vim.cmd('CopilotChatReset')
+          --   end
+          -- },
 
           -- toggleterm
           [_G.alt_shortkeys['term_toggle']] = {
@@ -135,38 +133,38 @@ return {
           },
 
           -- CopilotChat
-          [_G.alt_shortkeys['copilotchat_toggle']] = {
-            function()
-              chat.toggle()
-            end
-          },
-          [_G.alt_shortkeys['copilotchat_reset']] = {
-            function()
-              vim.cmd('CopilotChatReset')
-            end
-          },
-          [_G.alt_shortkeys['copilotchat_fix']] = {
-            function()
-              vim.cmd('CopilotChatFix')
-            end
-          },
-          [_G.alt_shortkeys['copilotchat_explain']] = {
-            function()
-              vim.cmd('CopilotChatExplain')
-            end
-          },
-          [_G.alt_shortkeys['copilotchat_optimize']] = {
-            function()
-              vim.cmd('CopilotChatOptimize')
-            end
-          },
-          [_G.alt_shortkeys['copilotchat_clean']] = {
-            function()
-              chat.ask('Clean up this code', {
-                selection = require('CopilotChat.select').visual
-              })
-            end
-          },
+          -- [_G.alt_shortkeys['copilotchat_toggle']] = {
+          --   function()
+          --     chat.toggle()
+          --   end
+          -- },
+          -- [_G.alt_shortkeys['copilotchat_reset']] = {
+          --   function()
+          --     vim.cmd('CopilotChatReset')
+          --   end
+          -- },
+          -- [_G.alt_shortkeys['copilotchat_fix']] = {
+          --   function()
+          --     vim.cmd('CopilotChatFix')
+          --   end
+          -- },
+          -- [_G.alt_shortkeys['copilotchat_explain']] = {
+          --   function()
+          --     vim.cmd('CopilotChatExplain')
+          --   end
+          -- },
+          -- [_G.alt_shortkeys['copilotchat_optimize']] = {
+          --   function()
+          --     vim.cmd('CopilotChatOptimize')
+          --   end
+          -- },
+          -- [_G.alt_shortkeys['copilotchat_clean']] = {
+          --   function()
+          --     chat.ask('Clean up this code', {
+          --       selection = require('CopilotChat.select').visual
+          --     })
+          --   end
+          -- },
 
           -- toggleterm
           [_G.alt_shortkeys['term_toggle']] = {
@@ -177,29 +175,31 @@ return {
         },
 
         i = {
-          [_G.alt_shortkeys['copilotchat_send']] = {
-            function()
-              chat.accept_diff()
-            end
-          },
-
-          [_G.alt_shortkeys['copilotchat_toggle']] = {
-            function()
-              chat.toggle()
-            end
-          },
-
-          [_G.alt_shortkeys['copilotchat_reset']] = {
-            function()
-              vim.cmd('CopilotChatReset')
-            end
-          },
+          -- [_G.alt_shortkeys['copilotchat_send']] = {
+          --   function()
+          --     chat.accept_diff()
+          --   end
+          -- },
+          --
+          -- [_G.alt_shortkeys['copilotchat_toggle']] = {
+          --   function()
+          --     chat.toggle()
+          --   end
+          -- },
+          --
+          -- [_G.alt_shortkeys['copilotchat_reset']] = {
+          --   function()
+          --     vim.cmd('CopilotChatReset')
+          --   end
+          -- },
 
           [_G.alt_shortkeys['insert_breakpoint']] = {
             function()
               local ft = vim.api.nvim_buf_get_option(0, 'filetype')
               if ft == 'python' then
                 insert_breakpoint("__import__('ipdb').set_trace(context=10)")
+              elseif ft == 'javascript' or ft == 'typescript' then
+                insert_breakpoint("debugger;")
               elseif ft == 'ruby' then
                 insert_breakpoint("require 'byebug'; byebug")
               end
@@ -212,11 +212,11 @@ return {
           [_G.alt_shortkeys['term_exec_last']] = { "<Cmd>ToggleTermExecLast<CR>", desc = "Execute last command in terminal" },
 
           -- CopilotChat
-          [_G.alt_shortkeys['copilotchat_toggle']] = {
-            function()
-              chat.toggle()
-            end
-          },
+          -- [_G.alt_shortkeys['copilotchat_toggle']] = {
+          --   function()
+          --     chat.toggle()
+          --   end
+          -- },
 
           ['<M-Esc>'] = {
             function()

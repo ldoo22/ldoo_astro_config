@@ -1,0 +1,56 @@
+-- return {
+--   {
+--     "CopilotC-Nvim/CopilotChat.nvim",
+--     lazy = false,
+--     branch = "main",
+--     dependencies = {
+--       { "zbirenbaum/copilot.lua" },
+--       -- { "github/copilot.vim" },
+--       -- { "nvim-lua/plenary.nvim" },
+--       { "nvim-lua/plenary.nvim", branch = "master" }
+--     },
+--     opts = {
+--       question_header = '###################################   **You**   ###################################',
+--       answer_header = '################################### **Copilot** ###################################',
+--       separator = ' ',
+--       window = {
+--         layout = "float",
+--         height = 0.9,
+--         width = 0.9,
+--         border = 'rounded',
+--         zindex = 100,
+--       },
+--       show_help = false,
+--       auto_insert_mode = true,
+--       mappings = {
+--         close = {
+--           normal = _G.alt_shortkeys['copilotchat_toggle'],
+--           insert = _G.alt_shortkeys['copilotchat_toggle']
+--         },
+--         reset = {
+--           normal = _G.alt_shortkeys['copilotchat_reset'],
+--           insert = _G.alt_shortkeys['copilotchat_reset']
+--         },
+--         submit_prompt = {
+--           normal = _G.alt_shortkeys['copilotchat_send'],
+--           insert = _G.alt_shortkeys['copilotchat_send']
+--         },
+--       },
+--     },
+--   },
+-- }
+
+-- return {
+--   {
+--     "CopilotC-Nvim/CopilotChat.nvim",
+--     dependencies = {
+--       { "github/copilot.vim" },                       -- or zbirenbaum/copilot.lua
+--       { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+--     },
+--     build = "make tiktoken",                          -- Only on MacOS or Linux
+--     opts = {
+--       -- See Configuration section for options
+--     },
+--     -- See Commands section for default commands if you want to lazy load on them
+--   },
+-- }

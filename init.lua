@@ -51,3 +51,12 @@ end
 
 require "lazy_setup"
 require "polish"
+
+-- Disable all folds
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt.foldenable = false
+    vim.opt.foldmethod = "manual"
+  end,
+})
